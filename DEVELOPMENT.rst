@@ -22,6 +22,33 @@ For example, to see available commands:
 
     poetry run mbslave --help
 
+Development Database (PostgreSQL)
+=================================
+
+For development and testing, you can use the provided ``Dockerfile.postgres`` to start a pre-initialized PostgreSQL database with the MusicBrainz schema.
+
+Using Docker Compose:
+
+::
+
+    docker compose -f docker-compose.dev.yml up -d
+
+This will start a PostgreSQL container on port 5432 with:
+* Database: ``musicbrainz``
+* User: ``musicbrainz``
+* Password: ``musicbrainz``
+
+The database will be automatically initialized with the schema when the container starts.
+
+Running Tests
+=============
+
+You can run the tests using ``pytest``. Some tests require a running development database (see above).
+
+::
+
+    poetry run pytest
+
 Updating SQL files and models
 =============================
 
